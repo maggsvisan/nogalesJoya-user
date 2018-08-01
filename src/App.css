@@ -21,7 +21,7 @@ input[type="text"] {
   margin: 0;
 }
 
-.notesHeader, .notesBody, .notesFooter{
+.notesBody, .notesFooter{
   background-color: rgba(0,0,0, .1);
   padding: 20px;
   margin: 0 auto;

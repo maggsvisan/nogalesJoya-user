@@ -6,13 +6,13 @@ import './QuickViewSchedule.css';
 import firebaseApp from '../../firebase/firebaseApp';
 
 const daysName = [
-    { name: 'Monday', key: 0 },
-    { name: 'Tuesday', key: 1 },
-    { name: 'Wednesday', key: 2 },
-    { name: 'Thursday', key: 3 },
-    { name: 'Friday', key: 4 },
-    { name: 'Saturday', key: 5 },
-    { name: 'Sunday', key: 6 },
+    { name: 'Lunes', key: 0 },
+    { name: 'Martes', key: 1 },
+    { name: 'Miércoles', key: 2 },
+    { name: 'Jueves', key: 3 },
+    { name: 'Viernes', key: 4 },
+    { name: 'Sábado', key: 5 },
+    { name: 'Domingo', key: 6 },
 ];
 
 let arrayScreens= [];
@@ -21,7 +21,7 @@ class PromoLoop extends Component {
 
     state = {
         screenName: 'Screen 1',
-        daySelected: 'Monday',
+        daySelected: 'Lunes',
         schedules: [],
         showResults: false,
         screenList: [],
@@ -95,32 +95,13 @@ class PromoLoop extends Component {
             <div className="QuickViewSchedule" >
 
                 <div>
-                    <h2 className="headerScheduler"> Quick View Schedule </h2>
-                    <span className="modalScheduler">
-                        <Modal
-                            header='Modal Header'
-                            trigger={<Button waves='light'>Help!<Icon right> help </Icon></Button>}>
-                            <p>Lorem ipsum dolor sit gmet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                        </Modal>
-                    </span>
+                    <h2 className="headerScheduler"> Ver Horario </h2>
                 </div>
 
                 <div className="row">
-                    <div className="col s6">
+                    <div className="col s12">
                         <div className="selectScreenQS">
-                            <p className="titleHead"> Select the screen  </p>
-                            <DropdownScreen
-                                handleChange={this.handleScreenChange}
-                                name="video"
-                                items={this.state.screenList}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="col s6">
-                        <div className="selectScreenQS">
-                            <p className="titleHead"> Select day  </p>
+                            <p className="titleHead"> Seleccione día </p>
                             <DropdownScreen
                                 handleChange={this.handleDayChange}
                                 name="video"
@@ -136,10 +117,10 @@ class PromoLoop extends Component {
                                 <Table className="quickTable">
                                     <thead>
                                         <tr>
-                                            <th> Schedule Name</th>
-                                            <th>Video Name</th>
-                                            <th>Start Time</th>
-                                            <th>End Time</th>
+                                            <th> Horario </th>
+                                            <th> Video </th>
+                                            <th>Inicio </th>
+                                            <th>Fin</th>
                                         </tr>
                                     </thead>
 
@@ -161,8 +142,6 @@ class PromoLoop extends Component {
                             </div>
                      </div>) : <br/>
                 }
-
-
                 <div className="row">
                     <div className="col12">
                         <Button
@@ -170,7 +149,7 @@ class PromoLoop extends Component {
                             type="submit"
                             value="Submit"
                         >
-                            Show
+                            Ver
                         </Button>
 
                     </div>

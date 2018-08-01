@@ -182,8 +182,8 @@ class SchedulerContent extends Component {
         this.setState(prevState => ({
             schedules: [...schedules, {
                 video: 'video1',
-                start: 0,
-                end: 0,
+                start: '00:00',
+                end: '00:00',
             }]
         }));
     }
@@ -382,32 +382,7 @@ class SchedulerContent extends Component {
             <div className="ScheduleContent" >
                 <div className="row">
                     <div className="col s12">
-                        <h6 className="headerSContent"> Four schedules per day can be added </h6>
-                    </div>
-                    <br />
-                    <br />
-                    <div className="row ">
-                        <div className="col s12">
-                            <div className="col s6">
-                                <p className="subtitlesHeadSchedule "> Select a screen  </p>
-                                <DropdownScreen
-                                    handleChange={this.handleScreenChange}
-                                    name="video"
-                                    items={this.state.screenList}
-                                />
-                            </div>
-                            <div className="col s6">
-                                <div className="btnMargin">
-                                    <Button  
-                                        onClick={() => {
-                                            this.selectAll();
-                                            
-                                        }}
-                                        type="submit" value="Apply"> All Screen 
-                                    </Button>
-                                </div>
-                            </div>
-                        </div>
+                        <h5 className="headerSContent"> Cuatro horarios al día  </h5>
                     </div>
                 
                     {
@@ -415,51 +390,33 @@ class SchedulerContent extends Component {
                             <Fragment key={index}>
                                 <div className="row">
                                     <div className="col s12">
-                                        <h5 className="titleHead">Schedule {index + 1}</h5>
+                                        <h5 className="titleHead">Horario {index + 1}</h5>
                                     </div>
                                 </div>
 
-                                <div className="row" >
-
-                                    { this.state.showCommonDrop ? (
-                                        <div className="row">
-                                        <div className="col s12">
-                                            <p className="subtitlesHeadSchedule "> Common videos, schedule in all screens  </p>
-                                                <Dropdown
-                                                    handleChange={this.handleScheduleChange}
-                                                    name="video"
-                                                    index={index}
-                                                    items= {commonVideos}
-                                                />            
+                                <div className="row" >   
+                                    <div className="col s12">
+                                        <p className="subtitlesHeadSchedule"> Seleccionar video </p>
+                                        <Dropdown
+                                            handleChange={this.handleScheduleChange}
+                                            name="video"
+                                            index={index}
+                                            items={this.state.videoList} 
+                                            />
                                         </div>
-                                        </div>): ( 
-                                            
-                                            <div className="col s12">
-                                          
-                                                <p className="subtitlesHeadSchedule"> Select a video in {this.state.screenName} to schedule </p>
-                                                <Dropdown
-                                                    handleChange={this.handleScheduleChange}
-                                                    name="video"
-                                                    index={index}
-                                                    items={this.state.videoList} 
-                                                    />
-                                           
-                                        </div>
-
-                                        )
-                                    }
                                 </div>
+
                                 <div className="row">
                                     <div className="col s6">
                                         <Row >
-                                            <p className="subtitlesHead2" > Start time </p>
+                                            <p className="titleHead" > Inicio </p>
                                             <Dropdown handleChange={this.handleScheduleChange} name="start" index={index} items={timeNumber} />
                                         </Row >
                                     </div>
 
                                     <div className="col s6">
                                         <Row >
-                                            <p className="subtitlesHead2"> End time </p>
+                                            <p className="titleHead"> Fin </p>
                                             <Dropdown handleChange={this.handleScheduleChange} name="end" index={index} items={timeNumber} />
                                         </Row >
                                     </div>
@@ -468,11 +425,11 @@ class SchedulerContent extends Component {
                                 <div className="row">
 
                                     <div className="col s6">
-                                        <Button onClick={() => this.addSchedule()} > Add </Button>
+                                        <Button onClick={() => this.addSchedule()} > Agregar Horario </Button>
                                     </div>
 
                                     <div className="col s6">
-                                        <Button onClick={() => this.removeSchedule(index)}>Remove </Button>
+                                        <Button onClick={() => {this.sendToDb() }}> Aplicar </Button>
                                     </div>
                                     
                                 </div>
@@ -480,19 +437,7 @@ class SchedulerContent extends Component {
                             </Fragment>
                         ))
                     }
-                   
                 </div>
-
-                <div className="row">
-                    <div className="col12">
-                        <Button 
-                            onClick={() => {
-                                this.sendToDb();
-                            }}
-                            > Apply </Button>
-                    </div>
-                </div>
-
             </div >
         )
     }

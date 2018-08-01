@@ -305,15 +305,7 @@ class PromoLoop extends Component {
             <div className="PromoLoop" >
 
                 <div>
-                     <h2 className="headerScheduler"> Loop Promo </h2> 
-                         <span className="modalScheduler">
-                            <Modal 
-                            header='Modal Header'
-                            trigger={<Button waves='light'>Help!<Icon right> help </Icon></Button>}>
-                            <p>Lorem ipsum dolor sit agmet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                            </Modal>
-                        </span>
+                     <h2 className="headerScheduler"> Promociones </h2> 
                 </div>
 
               
@@ -321,89 +313,65 @@ class PromoLoop extends Component {
                         <div className= "selectScreenLP">
                             <div className="addBorder1">
                                 <div className="row">
-                                    <div className="col s12">
-                                        <div className="col s6">
-                                            <br/>
-                                            <p className="titleHead"> Select a screen </p>
-                                            <DropdownScreen 
-                                                handleChange={this.handleScreenChange}
-                                                name="video"
-                                                items={this.state.screenList}
-                                            />
-                                            <br/>
-                                        </div>
+                                <div className="col s12">
+                                    
+                                {
+                                    this.state.schedules.map((value, index, key) => (
+                                        <Fragment key={index}>
+                                            <div className="row">
+                                                <div className="col s12">
+                                                    <div className="col s12">
+                                                        <p className="marginToptitleHead"> Seleccione video </p>
+                                                        <div className="fixSelectMargin">
+                                                        <DropdownScreen 
+                                                                handleChange={this.handleVideoChange}
+                                                                name="video"
+                                                                items={arrayVideos}
+                                                            /> 
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                            
+                                                <div className="col s12"> 
+                                                    <br/>
+                                                    <div className="col s6">
+                                                        <p className="titleHead"> Inicio </p>
+                                                        <Dropdown handleChange={this.handleScheduleChange} 
+                                                                name="start" index={index} 
+                                                                items={timeNumber} />                                       
+                                                    </div>
 
-                                        <div className="col s6">
-                                        <div  className="thBtn">
-                                            <Button 
-                                                onClick={() => {
-                                                    this.sendToDbAll();
-                                                }}
-                                            type="submit" value="Submit" > Apply All! </Button>
+                                                    <div className="col s6">
+                                                        <p className="titleHead"> Fin </p>
+                                                        <Dropdown handleChange={this.handleScheduleChange} 
+                                                                name="end" index={index} 
+                                                                items={timeNumber} />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </Fragment>
+                                    ))
+                                }
                                 </div>
+                                
+
+                            <div className="row">
+                                <div className="col s12">
+                                    <Button 
+                                        onClick={() => {
+                                            this.sendToDb();
+                                        }}
+                                    type="submit" value="Submit" > Aplicar </Button>
+                                
+                                </div>
+                            </div>
+                            </div>
+                            
                             </div>
                         </div>
                     </div>
 
-                <div className="row">
-                    <div className="col s12">
-                        <p className="titleHead" > Set time for video promo looping </p>
-                        <br/>
-                    {
-                        this.state.schedules.map((value, index, key) => (
-                            <Fragment key={index}>
-                                <div className="row">
-                                    <div className="col s12">
-                                        <div className="col s12">
-                                            <p className="titleHead"> Select video  </p>
-                                            <div className="fixSelectMargin">
-                                            <DropdownScreen 
-                                                    handleChange={this.handleVideoChange}
-                                                    name="video"
-                                                    items={arrayVideos}
-                                                /> 
-                                            </div> 
-                                        </div>
-                                    </div>
-                                   
-                                    <div className="col s12"> 
-                                        <br/>
-                                        <p className="titleHead"> Set time</p>
-                                        <div className="col s6">
-                                            <p> Start Time </p>
-                                            <Dropdown handleChange={this.handleScheduleChange} 
-                                                    name="start" index={index} 
-                                                    items={timeNumber} />                                       
-                                        </div>
-
-                                        <div className="col s6">
-                                            <p> End Time </p>
-                                            <Dropdown handleChange={this.handleScheduleChange} 
-                                                    name="end" index={index} 
-                                                    items={timeNumber} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </Fragment>
-                        ))
-                    }
-                    </div>
-                    
-
-                <div className="row">
-                    <div className="col s12">
-                        <Button 
-                            onClick={() => {
-                                this.sendToDb();
-                            }}
-                        type="submit" value="Submit" > Apply! </Button>
-                      
-                    </div>
-                </div>
-            </div>
+               
            </div>
         )
     }

@@ -5,13 +5,13 @@ import { Collapsible, CollapsibleItem, Modal, Button, Icon } from 'react-materia
 
 
 const Days = [
-    { name: "Monday", key: 0 },
-    { name: "Tuesday", key: 1 },
-    { name: "Wednesday", key: 2 },
-    { name: "Thursday", key: 3 },
-    { name: "Friday", key: 4 },
-    { name: "Saturday", key: 5 },
-    { name: "Sunday", key: 6 }
+    { name: "Lunes", key: 0 },
+    { name: "Martes", key: 1 },
+    { name: "Miércoles", key: 2 },
+    { name: "Jueves", key: 3 },
+    { name: "Viernes", key: 4 },
+    { name: "Sábado", key: 5 },
+    { name: "Domingo", key: 6 }
 ]
 
 class Scheduler extends Component {
@@ -20,16 +20,7 @@ class Scheduler extends Component {
             <div className="Scheduler" >
                 <div className="row"> 
                     <div className="col s12">
-                        <h2 className="headerScheduler"> Scheduler </h2> 
-                        
-                        <span className="modalScheduler">
-                            <Modal 
-                            header='Modal Header'
-                            trigger={<Button waves='light'>Help!<Icon right> help </Icon></Button>}>
-                            <p>Lorem ipsum dolor sit gmet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</p>
-                            </Modal>
-                        </span>
+                        <h2 className="headerScheduler"> Horario </h2> 
                     </div>
                 </div>
 

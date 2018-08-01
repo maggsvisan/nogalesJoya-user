@@ -411,114 +411,33 @@ class Announcements extends Component {
                 <div className="row"> 
 
                     <div>
-                        <h2 className="headerHBDPromo"> Announcements </h2> 
-                       
-                        <span className="modalScheduler">
-                            <Modal 
-                                header='Modal Header'
-                                trigger={<Button waves='light'>Help!<Icon right> help </Icon></Button>}>
-                                
-                                <div className="col s12" >
-                                    <p>Lorem ipsum dolor sit gmet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                        {/*
-                                        <div className="videoModal">
-                                            <ReactPlayer
-                                            url='https://www.youtube.com/watch?v=JnFW32XA7pk' 
-                                            className='react-player'
-                                            
-                                            />
-                                        </div>
-                                        */}
-
-                                </div>
-                                                                
-                            </Modal>
-                        </span>
-                    
+                        <h2 className="headerHBDPromo"> Anuncios </h2>                     
                     </div>
-
-                <div className="row"> 
-                    <div className="col s12"> 
-                        <div  className="fixTop">
-                            <div className="col s6">
-                                <p className="titleHead"> Select a screen for trigger </p>
-                                
-                                <DropdownScreen 
-                                    handleChange={this.handleScreenChange}
-                                    name="video"
-                                    items={this.state.screenList}
-                                />
-                            </div>
-                            <div className="col s6">
-                                <p className="titleHead"> Click to select all screens </p>
-                                    <Button  
-                                            onClick={() => {
-                                                this.selectAll();
-                                                
-                                        }}
-                                    type="submit" value="Apply"> All Screen </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
 
                     <div className="col s12">
-                        <br/>
-
-                        
                         <div className="col s12">
+                            <div className= "fixButtonPadding">
                                 <Button  
                                     onClick={() => {
                                         this.requestDB();
                                         
                                 }}
-                                type="submit" value="Apply"> Show current schedule </Button>
+                                type="submit" value="Apply"> Mostrar horario actual </Button>
+                            </div>
                         </div>
                        
-                         
-                        { this.state.showResults ? (
-                            <div className="row">
-                              <div className="col s12">
-                                <div className="fixTop">
-                                    <p className="titleHead"> Current ANNOUNCEMENT playing </p>
-                                    <div className="pageCenter">
-                                        <Table className="quickTable">
-                                            <thead>
-                                                <tr>
-                                                    <th>Video Name</th>
-                                                    <th>Start Time</th>
-                                                    <th>End Time</th>
-                                                    <th>Text1</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr >
-                                                    <td> {this.state.schedulesShow.VideoName1} </td>
-                                                    <td> {this.state.schedulesShow.startTime} </td>
-                                                    <td> {this.state.schedulesShow.endTime} </td>
-                                                    <td> {this.state.schedulesShow.Text1} </td>
-                                                </tr>
-                                            </tbody>
-                                        </Table>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>)  : <p> No announcement playing </p>
-                        }
 
                         { this.state.showResults2 ? (
                             <div className="row">
                                 <div className="col s12">
                                     <div className="fixTop">
-                                        <p className="titleHead"> Current ALERT playing </p>
+                                        <p className="titleHead"> Mostrando un anuncio en pantallas </p>
                                         <div className="pageCenter">
                                             <Table className="quickTable">
                                                 <thead>
                                                     <tr>
-                                                        <th>Video Name</th>
-                                                        <th>Alert</th>
+                                                        <th>Video</th>
+                                                        <th>Anuncio en pantallas</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -532,99 +451,63 @@ class Announcements extends Component {
                                     </div>
                                 </div>
                             </div>
-                            )  : <p> No alert playing </p>
+                            )  : (
+                                <div>
+                                    <br/>
+                                    <p> No hay ningún anuncio en pantallas </p>
+                                    <br/>
+                                </div>
+                            )
                         }
                     </div>
 
    
                     <div className="col s12">
                       <div className="col s12">
-                      <div className="borderSchedule">
-                            <p className="titleHead" > Set time for video promo looping </p>
-                            {
+                      <div className="addBorderAnnoun">
+                      <br/>
+                            {   
                                 this.state.schedules.map((value, index, key) => (
                                     <Fragment key={index}>
                                         <div className="row">
-
-                                            <div className="col s4">
+                                            <div className="col s12">
                                                 <Dropdown 
                                                     handleChange={this.handleScheduleChange}
                                                     name="video"
                                                     index={index} 
                                                     items={this.state.videosDropDown} />
-                                                
-                                            </div>
-
-                                            <div className="col s4">
-                                                <Dropdown handleChange={this.handleScheduleChange} name="start" index={index} items={timeNumber} />                                       
-                                            </div>
-
-                                            <div className="col s4">
-                                                <Dropdown handleChange={this.handleScheduleChange} name="end" index={index} items={timeNumber} />
                                             </div>
                                         </div>
                                     </Fragment>
                                 ))
                             }
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                
-                <div className = "row">  
-                    <div className="col s12">
-                        <input className="inputName" 
-                                ref={input => { this.textInput = input; }}
-                                type="text" value={this.state.value} 
-                                placeholder="Enter input for announcement ..."
-                                onChange={this.handleChange} 
-                        />
-                        <h6> The max input lenght: 50 characters  </h6>
-                        { this.state.warning  ? (
-                            <p className="subtitlesHeadAnn1"> Please enter input with less content 
-                                (Input content: {this.state.quantityInput})</p>
-                            ): <p className="subtitlesHeadAnn2"> Input content: {this.state.quantityInput}</p>
 
-                        }
-                    </div>
-                </div>
-                
-                <div className="addBorderAnnoun"> 
-                    <div className = "row">    
-                        <div className="col s12">
-                            <div className="col s6">
-                                <div className="fixTop">
-                                    <p> Set with schedule</p>
+                            <div className = "row">  
+                                <div className="col s12">
+                                    <input className="inputName" 
+                                            ref={input => { this.textInput = input; }}
+                                            type="text" value={this.state.value} 
+                                            placeholder=" Escriba un anuncio ..."
+                                            onChange={this.handleChange} 
+                                    />
+                                    <h6> Cantidad máxima de letras: 50 letras  </h6>
+                                    { this.state.warning  ? (
+                                        <p className="subtitlesHeadAnn1"> Agregue un contenido con menos letras 
+                                            (Cantidad de letras: {this.state.quantityInput})</p>
+                                        ): <p className="subtitlesHeadAnn2"> Cantidad de letras: {this.state.quantityInput}</p>
+
+                                    }
                                 </div>
                             </div>
-                            
-                            <div className="col s6"> 
-                                <div className="fixTop">
-                                    <p> Set with NO schedule </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className="col s12">
-                            <div className="col s6">
-                                <div className="btnMargin2"> 
-                                    <Button  
-                                        onClick={() => {
-                                            this.sendToDb();
-                                    }}
-                                    type="submit" value="Apply"> Apply </Button>
-                                </div>
-                            </div>
-                        
-                    
-                            <div className="col s6">
+
+                            <div className = "row">    
                                 <div className="col s6">
                                     <div className="btnMargin2">
                                         <Button  
                                             onClick={() => {
                                                 this.sendApplyNow();
                                         }}
-                                        type="submit" value="Apply"> Enable! </Button>
+                                        type="submit" value="Apply"> Encender </Button>
                                     </div>
                                 </div>
                             
@@ -635,14 +518,17 @@ class Announcements extends Component {
                                             onClick={() => {
                                                 this.changeTrigger2();
                                         }}
-                                        type="submit" value="Apply"> Disable! </Button>
+                                        type="submit" value="Apply"> Apagar </Button>
                                     </div>
                                 </div>
-                            </div>  
+                            </div>
+
                         </div>
                     </div>
+                    </div>
                 </div>
-
+                
+               
             </div>
         )
     }

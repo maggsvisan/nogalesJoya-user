@@ -78,3 +78,7 @@ input[type="text"] {
 .fixTop{
     margin-top: 15px;
 }
+
+.fixButtonPadding{
+    margin-bottom: 10px;
+}

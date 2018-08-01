@@ -41,12 +41,12 @@ class App extends Component {
   render() {
     return (
 
-      <div className="notesContainer">
+      <div >
         <div className="notesHeader">
           <h1>
-            Digital Signage Management
+           Los Nogales Joya
           </h1>
-          <h5>Change your screen's content from a web application</h5>
+          
         </div>
 
         { this.state.user ? (<Toolbar />) : (<Login />)}
