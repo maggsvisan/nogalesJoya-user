@@ -7,13 +7,13 @@ import './QuickViewSchedule.css';
 import firebaseApp from '../../firebase/firebaseApp';
 
 const daysName = [
-    { name: 'Monday', key: 0 },
-    { name: 'Tuesday', key: 1 },
-    { name: 'Wednesday', key: 2 },
-    { name: 'Thursday', key: 3 },
-    { name: 'Friday', key: 4 },
-    { name: 'Saturday', key: 5 },
-    { name: 'Sunday', key: 6 },
+    { name: 'Lunes', key: 0 },
+    { name: 'Martes', key: 1 },
+    { name: 'Miércoles', key: 2 },
+    { name: 'Jueves', key: 3 },
+    { name: 'Viernes', key: 4 },
+    { name: 'Sábado', key: 5 },
+    { name: 'Domingo', key: 6 },
 ];
 
 let arrayScreens= [];
@@ -23,11 +23,11 @@ let schedulerRef;
 let arraySchedules= [];
 
 
-class PromoLoop extends Component {
+class QuickViewSchedule extends Component {
 
     state = {
         screenName: 'Screen 1',
-        daySelected: 'Monday',
+        daySelected: 'Lunes',
         schedules: [],
         showResults: false,
         screenList: [],
@@ -241,7 +241,7 @@ class PromoLoop extends Component {
         )
     }
 }
-export default PromoLoop;
+export default QuickViewSchedule;
 
 
 
